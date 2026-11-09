@@ -1,0 +1,70 @@
+<!-- [주문 상세정보 Fragment] -->
+<!-- 주문 상세정보를 팝업(Dialog) 형태로 보여주기 위한 화면 -->
+<core:FragmentDefinition
+    id="fragOrderDetail"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <!-- [1. Dialog 영역]  -->
+    <!-- 주문 상세정보를 팝업창으로 표시하는 영역 -->
+
+    <Dialog
+        id="dlgOrderDetail"
+        title="주문 상세정보"
+        contentWidth="40rem"
+        contentHeight="25rem">
+
+        <!-- [2. Table 영역] -->
+        <!-- 선택한 주문에 포함된 상품 상세정보를 표시 -->
+        <!-- Order_Details 데이터를 테이블에 바인딩 -->
+
+        <Table id="tblOrderDetail" items="{Order_Details}">
+
+        <!-- [2-1. columns 영역] -->
+            <!-- 테이블의 각 열 제목을 설정 -->
+
+            <columns>
+                <Column id="colProduct">
+                    <Text id="txtProduct" text="상품번호"></Text>
+                </Column>
+
+                <Column id="colPrice">
+                    <Text id="txtPrice" text="단가"></Text>
+                </Column>
+
+                <Column id="colQuantity">
+                    <Text id="txtQuantity" text="수량"></Text>
+                </Column>
+
+                <Column id="colDiscount">
+                    <Text id="txtDiscount" text="할인율"></Text>
+                </Column>
+            </columns>
+
+             <!-- [2-2. items 영역] -->
+            <!-- 테이블에 표시할 실제 데이터 설정  -->
+            <!-- 각 주문 상세 데이터를 한 행씩 표시 -->
+
+            <items>
+                <ColumnListItem id="itemOrderDetail">
+                    <cells>
+                        <Text id="txtProductID" text="{ProductID}"></Text>
+                        <Text id="txtUnitPrice" text="{UnitPrice}"></Text>
+                        <Text id="txtQty" text="{Quantity}"></Text>
+                        <Text id="txtDiscountValue" text="{Discount}"></Text>
+                    </cells>
+                </ColumnListItem>
+            </items>
+
+        </Table>
+
+         <!-- [3. endButton 영역] -->
+        <!-- 팝업창 하단에 닫기 버튼을 생성하는 영역 -->
+        <!-- 버튼 클릭 시 Controller의 onClose 함수 실행 -->
+
+        <endButton>
+            <Button id="btnClose" text="닫기" press=".onClose"></Button>
+        </endButton>
+
+    </Dialog>
+
+</core:FragmentDefinition>
